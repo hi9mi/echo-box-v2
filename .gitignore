@@ -1,0 +1,4 @@
+build/bin
+.vscode/*
+!.vscode/extensions.json
+*.mp3
