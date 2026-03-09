@@ -1,0 +1,118 @@
+@layer themes {
+  :root {
+    --primitive-yellow-500: #c8e000;
+    --primitive-yellow-400: #e8ff47;
+    --primitive-yellow-300: #f0ff80;
+    --primitive-orange-400: #ff6b35;
+    --primitive-red-400: #ff6b6b;
+
+    --primitive-neutral-950: #0e0e0f;
+    --primitive-neutral-900: #161618;
+    --primitive-neutral-850: #1c1c1f;
+    --primitive-neutral-700: #2a2a2e;
+    --primitive-neutral-600: #3a3a40;
+    --primitive-neutral-400: #6b6b72;
+    --primitive-neutral-200: #c8c8cc;
+    --primitive-neutral-100: #e8e8ec;
+    --primitive-neutral-50: #f4f4f6;
+    --primitive-neutral-0: #ffffff;
+
+    /* light-specific warm neutrals */
+    --primitive-warm-50: #fafaf7;
+    --primitive-warm-100: #f2f2ec;
+    --primitive-warm-200: #e4e4da;
+    --primitive-warm-500: #8a8a80;
+    --primitive-warm-700: #3a3a30;
+    --primitive-warm-900: #1a1a14;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;
+
+    --font-display: "Bebas Neue", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-mono: "DM Mono", monospace;
+
+    --text-xs: 11px;
+    --text-sm: 12px;
+    --text-md: 13px;
+    --text-lg: 15px;
+
+    --ease-default: 150ms ease;
+    --ease-medium: 250ms ease;
+  }
+
+  :root[data-theme="dark"] {
+    --bg-app: var(--primitive-neutral-950);
+    --bg-surface: var(--primitive-neutral-900);
+    --bg-panel: var(--primitive-neutral-850);
+    --bg-elevated: var(--primitive-neutral-700);
+
+    --border-subtle: var(--primitive-neutral-700);
+    --border-strong: var(--primitive-neutral-600);
+
+    --text-primary: var(--primitive-neutral-50);
+    --text-secondary: var(--primitive-neutral-400);
+    --text-disabled: var(--primitive-neutral-600);
+
+    --accent-primary: var(--primitive-yellow-400);
+    --accent-secondary: var(--primitive-orange-400);
+    --accent-on: var(--primitive-neutral-950);
+
+    --state-hover: rgba(255, 255, 255, 0.05);
+    --state-active: rgba(255, 255, 255, 0.08);
+
+    --player-progress-bg: var(--primitive-neutral-600);
+    --player-progress-fill: var(--accent-primary);
+    --player-waveform-bg: var(--primitive-neutral-600);
+    --player-waveform-fill: var(--accent-primary);
+    --player-eq-color: var(--accent-primary);
+
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.6);
+
+    color-scheme: dark;
+  }
+
+  :root[data-theme="light"] {
+    --bg-app: var(--primitive-warm-50);
+    --bg-surface: var(--primitive-neutral-0);
+    --bg-panel: var(--primitive-warm-100);
+    --bg-elevated: var(--primitive-warm-200);
+
+    --border-subtle: var(--primitive-warm-200);
+    --border-strong: var(--primitive-neutral-200);
+
+    --text-primary: var(--primitive-warm-900);
+    --text-secondary: var(--primitive-warm-500);
+    --text-disabled: var(--primitive-neutral-200);
+
+    --accent-primary: var(--primitive-yellow-500);
+    --accent-secondary: var(--primitive-orange-400);
+    --accent-on: var(--primitive-warm-900);
+
+    --state-hover: rgba(0, 0, 0, 0.04);
+    --state-active: rgba(0, 0, 0, 0.07);
+
+    --player-progress-bg: var(--primitive-warm-200);
+    --player-progress-fill: var(--accent-primary);
+    --player-waveform-bg: var(--primitive-warm-200);
+    --player-waveform-fill: var(--accent-primary);
+    --player-eq-color: var(--accent-primary);
+
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.12);
+
+    color-scheme: light;
+  }
+}

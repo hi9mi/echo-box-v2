@@ -1,0 +1,99 @@
+@font-face {
+  font-family: "DM Sans";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz\,wght.ttf")
+      format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/DM_Mono/DMMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/DM_Mono/DMMono-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/DM_Mono/DMMono-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/DM_Mono/DMMono-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/DM_Mono/DMMono-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src:
+    local(""),
+    url("../../shared/assets/fonts/DM_Mono/DMMono-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  font-synthesis: none;
+}

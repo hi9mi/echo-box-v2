@@ -138,10 +138,15 @@
   :focus-visible {
     outline-offset: 0.2rem;
   }
-}
 
-.app {
-  height: 100vh;
-  width: 100vw;
-  background-color: #fff;
+  /* @media (prefers-reduced-motion: reduce) {
+    *:not([data-animated], [data-animated] *),
+    *:not([data-animated], [data-animated] *)::before,
+    *:not([data-animated], [data-animated] *)::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  } */
 }

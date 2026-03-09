@@ -1,0 +1,16 @@
+@layer base {
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    overflow: hidden;
+    user-select: none;
+    transition:
+      background-color var(--ease-medium),
+      color var(--ease-medium);
+  }
+}
