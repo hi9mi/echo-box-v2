@@ -13,7 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@app": resolve("./src/app"),
-      "@pages": resolve("./src/pages"),
+      "@screens": resolve("./src/screens"),
       "@widgets": resolve("./src/widgets"),
       "@features": resolve("./src/features"),
       "@entities": resolve("./src/entities"),
