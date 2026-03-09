@@ -66,6 +66,8 @@
     --text-disabled: var(--primitive-neutral-600);
 
     --accent-primary: var(--primitive-yellow-400);
+    --accent-primary-hover: var(--primitive-yellow-300);
+    --accent-primary-active: var(--primitive-yellow-500);
     --accent-secondary: var(--primitive-orange-400);
     --accent-on: var(--primitive-neutral-950);
 
@@ -98,6 +100,8 @@
     --text-disabled: var(--primitive-neutral-200);
 
     --accent-primary: var(--primitive-yellow-500);
+    --accent-primary-hover: var(--primitive-yellow-600);
+    --accent-primary-active: var(--primitive-yellow-700);
     --accent-secondary: var(--primitive-orange-400);
     --accent-on: var(--primitive-warm-900);
 

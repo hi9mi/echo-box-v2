@@ -15,9 +15,11 @@
   },
   "dependencies": {
     "@reatom/core": "^1000.15.1",
-    "@reatom/jsx": "^1000.1.0"
+    "@reatom/jsx": "^1000.1.0",
+    "class-variance-authority": "^0.7.1"
   },
   "devDependencies": {
+    "@spiriit/vite-plugin-svg-spritemap": "^6.0.0",
     "@types/node": "^25.3.5",
     "@typescript/native-preview": "^7.0.0-dev.20260307.1",
     "oxfmt": "^0.36.0",

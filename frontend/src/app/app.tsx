@@ -1,18 +1,6 @@
 import { currentScreen } from "@screens/current-screen";
-import { mainRoute, testRoute } from "@shared/router";
+import styles from "./app.module.css";
 
 export const App = () => {
-  return (
-    <div class="app">
-      <nav>
-        <a href={mainRoute.path}>Main</a>
-        <a href={testRoute.path}>Test</a>
-      </nav>
-
-      <main>
-        <h1>App</h1>
-        <div>{currentScreen}</div>
-      </main>
-    </div>
-  );
+  return <div class={styles.app}>{currentScreen}</div>;
 };

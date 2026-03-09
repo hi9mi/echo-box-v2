@@ -1,12 +1,15 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
+import VitePluginSvgSpritemap from "@spiriit/vite-plugin-svg-spritemap";
 
 export default defineConfig({
+  plugins: [VitePluginSvgSpritemap("./src/shared/assets/icons/*.svg")],
   oxc: {
     jsx: {
       runtime: "classic", // Required for custom pragma
       pragma: "h",
       pragmaFrag: "hf",
+      throwIfNamespace: false,
     },
     jsxInject: `import { h, hf } from "@reatom/jsx"`,
   },

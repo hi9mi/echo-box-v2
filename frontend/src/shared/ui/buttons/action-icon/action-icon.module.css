@@ -1,0 +1,91 @@
+@layer components {
+  .actionIcon {
+    --_bg: transparent;
+    --_fg: var(--accent-on);
+    --_bd: transparent;
+
+    display: inline-grid;
+    place-items: center;
+    border: 1px solid var(--_bd);
+    background-color: var(--_bg);
+    color: var(--_fg);
+    outline: 0;
+    cursor: pointer;
+    transition:
+      background-color var(--ease-medium),
+      color var(--ease-medium),
+      border-color var(--ease-medium),
+      box-shadow var(--ease-medium),
+      transform var(--ease-medium);
+  }
+  .actionIcon:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .actionIcon[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .xs {
+    width: 16px;
+    height: 16px;
+  }
+  .sm {
+    width: 24px;
+    height: 24px;
+  }
+  .md {
+    width: 32px;
+    height: 32px;
+  }
+  .lg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .round {
+    border-radius: var(--radius-full);
+  }
+  .square {
+    border-radius: var(--radius-sm);
+  }
+
+  .default {
+    --_bg: transparent;
+    --_fg: var(--text-secondary);
+    --_bd: transparent;
+  }
+  .default:hover:not(:disabled) {
+    --_bg: var(--state-hover);
+    --_fg: var(--text-primary);
+  }
+
+  .filled {
+    --_bg: var(--accent-primary);
+    --_fg: var(--accent-on);
+    --_bd: transparent;
+  }
+  .filled:hover:not(:disabled) {
+    --_bg: var(--accent-primary-hover);
+  }
+
+  .transparent {
+    --_bg: transparent;
+    --_fg: var(--text-secondary);
+    --_bd: transparent;
+  }
+  .transparent:hover:not(:disabled) {
+    filter: brightness(0.98);
+  }
+
+  .actionIcon:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--bg-surface),
+      0 0 0 4px var(--accent-primary);
+  }
+  .actionIcon:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+}

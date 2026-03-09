@@ -1,0 +1,13 @@
+.app {
+  display: grid;
+  grid-template-rows: 72px 1fr 88px;
+  gap: 1px;
+  grid-template-areas:
+    "header"
+    "main"
+    "bottom-bar";
+
+  container: app / inline-size;
+  height: 100%;
+  width: 100%;
+}
