@@ -1,8 +1,28 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 import { resolve } from "node:path";
 import VitePluginSvgSpritemap from "@spiriit/vite-plugin-svg-spritemap";
 
 export default defineConfig({
+  fmt: {
+    printWidth: 80,
+    arrowParens: "avoid",
+    trailingComma: "none",
+  },
+  lint: {
+    plugins: ["eslint", "typescript", "unicorn", "oxc", "jsx-a11y"],
+    categories: {
+      correctness: "error",
+      suspicious: "warn",
+    },
+    env: {
+      browser: true,
+    },
+    ignorePatterns: ["dist", "node_modules"],
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
+  },
   plugins: [VitePluginSvgSpritemap("./src/shared/assets/icons/*.svg")],
   oxc: {
     jsx: {

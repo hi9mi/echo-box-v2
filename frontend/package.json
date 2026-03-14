@@ -3,13 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "npm run typecheck && vite build",
-    "preview": "vite preview",
-    "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix",
+    "dev": "vp dev",
+    "build": "npm run typecheck && vp build",
+    "preview": "vp preview",
+    "fmt": "vp fmt",
+    "fmt:check": "vp fmt --check",
+    "lint": "vp lint",
+    "lint:fix": "vp lint --fix",
     "typecheck": "tsgo --noEmit",
     "build:types": "tsgo -p tsconfig.json"
   },
@@ -22,15 +22,16 @@
     "@spiriit/vite-plugin-svg-spritemap": "^6.0.0",
     "@types/node": "^25.3.5",
     "@typescript/native-preview": "^7.0.0-dev.20260307.1",
-    "oxfmt": "^0.36.0",
-    "oxlint": "^1.51.0",
     "typescript": "^5.9.3",
-    "vite": "^8.0.0-beta.16"
-  },
-  "overrides": {
-    "vite": "^8.0.0-beta.16"
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vite-plus": "latest"
   },
   "lint-staged": {
     "*": "oxfmt --no-error-on-unmatched-pattern"
+  },
+  "packageManager": "npm@11.11.1",
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
   }
 }
