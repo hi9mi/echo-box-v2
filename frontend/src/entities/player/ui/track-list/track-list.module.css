@@ -1,0 +1,57 @@
+.playlist {
+  background-color: var(--bg-panel);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 100%;
+  transition:
+    background-color var(--ease-medium),
+    border-color var(--ease-medium);
+}
+
+.playlistHeader {
+  padding: var(--space-5) 18px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  transition: border-color var(--ease-medium);
+}
+
+.playlistTitle {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  transition: color var(--ease-medium);
+}
+
+.playlistCount {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  transition: color var(--ease-medium);
+}
+
+.playlistActions {
+  display: flex;
+  gap: 6px;
+}
+
+.trackList {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2) 0;
+}
+.trackList::-webkit-scrollbar {
+  width: 4px;
+}
+.trackList::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.trackList::-webkit-scrollbar-thumb {
+  background-color: var(--bg-elevated);
+  border-radius: 2px;
+}

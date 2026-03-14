@@ -1,5 +1,6 @@
 @layer themes {
   :root {
+    /* primitives */
     --primitive-yellow-500: #c8e000;
     --primitive-yellow-400: #e8ff47;
     --primitive-yellow-300: #f0ff80;
@@ -25,6 +26,7 @@
     --primitive-warm-700: #3a3a30;
     --primitive-warm-900: #1a1a14;
 
+    /* spacing */
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 12px;
@@ -34,11 +36,13 @@
     --space-8: 32px;
     --space-10: 40px;
 
+    /* radius */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-full: 9999px;
 
+    /* typography */
     --font-display: "Bebas Neue", sans-serif;
     --font-body: "DM Sans", sans-serif;
     --font-mono: "DM Mono", monospace;
@@ -48,6 +52,7 @@
     --text-md: 13px;
     --text-lg: 15px;
 
+    /* motion */
     --ease-default: 150ms ease;
     --ease-medium: 250ms ease;
   }
@@ -65,14 +70,27 @@
     --text-secondary: var(--primitive-neutral-400);
     --text-disabled: var(--primitive-neutral-600);
 
-    --accent-primary: var(--primitive-yellow-400);
-    --accent-primary-hover: var(--primitive-yellow-300);
-    --accent-primary-active: var(--primitive-yellow-500);
+    /* single accent source */
+    --accent: var(--primitive-yellow-400);
+
+    /* keep old semantic names */
+    --accent-primary: var(--accent);
+    --accent-primary-hover: color-mix(in oklch, var(--accent), white 15%);
+    --accent-primary-active: color-mix(in oklch, var(--accent), black 20%);
     --accent-secondary: var(--primitive-orange-400);
+    --accent-danger: var(--primitive-red-400);
     --accent-on: var(--primitive-neutral-950);
 
     --state-hover: rgba(255, 255, 255, 0.05);
     --state-active: rgba(255, 255, 255, 0.08);
+    --state-selected: color-mix(in oklch, var(--accent), transparent 86%);
+    --state-selected-strong: color-mix(
+      in oklch,
+      var(--accent),
+      transparent 76%
+    );
+
+    --focus-ring: color-mix(in oklch, var(--accent), transparent 55%);
 
     --player-progress-bg: var(--primitive-neutral-600);
     --player-progress-fill: var(--accent-primary);
@@ -99,14 +117,27 @@
     --text-secondary: var(--primitive-warm-500);
     --text-disabled: var(--primitive-neutral-200);
 
-    --accent-primary: var(--primitive-yellow-500);
-    --accent-primary-hover: var(--primitive-yellow-600);
-    --accent-primary-active: var(--primitive-yellow-700);
+    /* single accent source */
+    --accent: var(--primitive-yellow-500);
+
+    /* keep old semantic names */
+    --accent-primary: var(--accent);
+    --accent-primary-hover: color-mix(in oklch, var(--accent), white 10%);
+    --accent-primary-active: color-mix(in oklch, var(--accent), black 18%);
     --accent-secondary: var(--primitive-orange-400);
+    --accent-danger: var(--primitive-red-400);
     --accent-on: var(--primitive-warm-900);
 
     --state-hover: rgba(0, 0, 0, 0.04);
     --state-active: rgba(0, 0, 0, 0.07);
+    --state-selected: color-mix(in oklch, var(--accent), transparent 84%);
+    --state-selected-strong: color-mix(
+      in oklch,
+      var(--accent),
+      transparent 74%
+    );
+
+    --focus-ring: color-mix(in oklch, var(--accent), transparent 60%);
 
     --player-progress-bg: var(--primitive-warm-200);
     --player-progress-fill: var(--accent-primary);
