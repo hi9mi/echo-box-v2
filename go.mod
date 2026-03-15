@@ -2,7 +2,10 @@ module echo-box-v2
 
 go 1.23
 
-require github.com/wailsapp/wails/v2 v2.10.2
+require (
+	github.com/dhowden/tag v0.0.0-20240417053706-3d75831295e8
+	github.com/wailsapp/wails/v2 v2.10.2
+)
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect

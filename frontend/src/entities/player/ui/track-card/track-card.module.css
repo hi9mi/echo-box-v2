@@ -7,10 +7,11 @@
 }
 .trackButton {
   display: grid;
-  grid-template-columns: 28px 1fr auto;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
   align-items: center;
   gap: 10px;
   width: 100%;
+  max-width: 100%;
   background-color: transparent;
   border: none;
   outline: none;
@@ -70,7 +71,7 @@
   transition: color var(--ease-medium);
 }
 
-.trackItem:focus-within {
+.trackItem:has(.trackButton:focus-visible) {
   box-shadow:
     0 0 0 2px var(--bg-surface),
     0 0 0 4px var(--accent-primary);

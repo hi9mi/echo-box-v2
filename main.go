@@ -1,6 +1,8 @@
 package main
 
 import (
+	"echo-box-v2/app"
+	"echo-box-v2/internal/library"
 	"embed"
 
 	"github.com/wailsapp/wails/v2"
@@ -13,7 +15,7 @@ var assets embed.FS
 
 func main() {
 	// Create an instance of the app structure
-	app := NewApp()
+	app := app.NewApp(library.NewService())
 
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -24,7 +26,7 @@ func main() {
 			Assets: assets,
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
-		OnStartup:        app.startup,
+		OnStartup:        app.Startup,
 		Bind: []interface{}{
 			app,
 		},

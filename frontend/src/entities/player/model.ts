@@ -1,19 +1,18 @@
-import { atom, computed, withActions } from "@reatom/core";
+import {
+  action,
+  atom,
+  computed,
+  withActions,
+  withConnectHook,
+  wrap,
+} from "@reatom/core";
+import { ScanFolder } from "@wails/go/app/App";
+import type { domain } from "@wails/go/models";
+import { EventsOn } from "@wails/runtime/runtime";
 
-export type Track = {
-  id: string;
-  path: string;
-  title: string;
-  duration: number;
-  cover: string | null;
-  artist?: string;
-  album?: string;
-  trackNumber?: number;
-  year?: number;
-  genre?: string;
-};
+export interface Track extends domain.Track {}
 
-const mockTracks = [
+const mockTracks: Track[] = [
   {
     id: "1",
     title: "Track 1",
@@ -21,7 +20,9 @@ const mockTracks = [
     album: "",
     duration: 150,
     path: "",
-    cover: null,
+    fileName: "test",
+    coverData: [],
+    coverMime: "",
   },
   {
     id: "2",
@@ -30,7 +31,9 @@ const mockTracks = [
     album: "",
     duration: 180,
     path: "",
-    cover: null,
+    fileName: "test",
+    coverData: [],
+    coverMime: "",
   },
   {
     id: "3",
@@ -39,7 +42,9 @@ const mockTracks = [
     album: "",
     duration: 210,
     path: "",
-    cover: null,
+    fileName: "test",
+    coverData: [],
+    coverMime: "",
   },
   {
     id: "4",
@@ -48,7 +53,9 @@ const mockTracks = [
     album: "",
     duration: 240,
     path: "",
-    cover: null,
+    fileName: "test",
+    coverData: [],
+    coverMime: "",
   },
 ];
 
@@ -77,3 +84,135 @@ export const currentTrackAtom = computed(() => {
   if (currentId === null) return null;
   return queue.find((track) => track.id === currentId) ?? null;
 }, "player.currentTrack");
+
+type ScanState = {
+  status: "idle" | "running" | "done" | "error";
+  total: number;
+  current: number;
+  path: string;
+  success: number;
+  error: string | null;
+};
+
+type ScanStarted = {
+  total: number;
+};
+
+type ScanProgress = {
+  current: number;
+  total: number;
+  path: string;
+};
+
+type ScanFinished = {
+  total: number;
+  success: number;
+};
+
+type ScanFailed = {
+  error: string;
+};
+
+const ScanStartedEvent = "library:scan:started";
+const ScanFinishedEvent = "library:scan:finished";
+const ScanProgressEvent = "library:scan:progress";
+const ScanFailedEvent = "library:scan:failed";
+
+export const scanStateAtom = atom<ScanState>(
+  {
+    status: "idle",
+    total: 0,
+    current: 0,
+    path: "",
+    success: 0,
+    error: null,
+  },
+  "library.scanState",
+).extend(
+  withConnectHook(() => {
+    const offStarted = EventsOn(
+      ScanStartedEvent,
+      wrap((data: ScanStarted) => {
+        console.log("[started]", data);
+
+        scanStateAtom.set((state) => ({
+          ...state,
+          status: "running",
+          total: data.total,
+          current: 0,
+          success: 0,
+          error: null,
+        }));
+      }),
+    );
+
+    const offProgress = EventsOn(
+      ScanProgressEvent,
+      wrap((data: ScanProgress) => {
+        console.log("[progress]", data);
+
+        scanStateAtom.set((state) => ({
+          ...state,
+          status: "running",
+          current: data.current,
+          total: data.total,
+          path: data.path,
+        }));
+      }),
+    );
+
+    const offFinished = EventsOn(
+      ScanFinishedEvent,
+      wrap((data: ScanFinished) => {
+        console.log("[finished]", data);
+
+        scanStateAtom.set((state) => ({
+          ...state,
+          status: "done",
+          total: data.total,
+          current: data.total,
+          success: data.success,
+        }));
+      }),
+    );
+
+    const offFailed = EventsOn(
+      ScanFailedEvent,
+      wrap((data: ScanFailed) => {
+        console.log("[failed]", data);
+
+        scanStateAtom.set((state) => ({
+          ...state,
+          status: "error",
+          error: data.error,
+        }));
+      }),
+    );
+
+    return () => {
+      offStarted();
+      offProgress();
+      offFinished();
+      offFailed();
+    };
+  }),
+  withActions((target) => ({
+    reset: () =>
+      target.set({
+        status: "idle",
+        total: 0,
+        current: 0,
+        path: "",
+        success: 0,
+        error: null,
+      }),
+  })),
+);
+
+export const scanFolder = action(async () => {
+  scanStateAtom.reset();
+  const tracks = await wrap(ScanFolder());
+  queueAtom.set(tracks);
+
+  return tracks;
+}, "library.scanFolder");

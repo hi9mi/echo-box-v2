@@ -8,6 +8,7 @@ export type TrackCardProps = {
   trackIndex: number;
   // TODO: should have loaders?
   // loading?: boolean;
+  cover: null;
   onClick?: (
     trackId: string,
     event: Event & { currentTarget: HTMLButtonElement },

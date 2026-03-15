@@ -1,23 +1,12 @@
-import { activeTrackId, queueAtom, TrackList } from "@entities/player";
+import {
+  activeTrackId,
+  queueAtom,
+  scanFolder,
+  scanStateAtom,
+  TrackList,
+} from "@entities/player";
 import styles from "./main.module.css";
-import { action, atom, withActions, withAsyncData, wrap } from "@reatom/core";
 import { ActionIcon, Icon } from "@shared/ui";
-import { OpenDialog, Greet } from "@wails/go/main/App";
-
-const value = atom("", "value").extend(
-  withActions((target) => ({
-    setValue: (nextValue: string) => target.set(nextValue),
-    resetValue: () => target.set(""),
-  })),
-);
-
-const greet = action(async () => {
-  const name = value();
-  if (name.trim().length < 1) return;
-  return await wrap(Greet(value()));
-}, "value.greet").extend(withAsyncData({ status: true }));
-
-console.log(queueAtom());
 
 export const MainScreen = () => {
   return (
@@ -49,19 +38,51 @@ export const MainScreen = () => {
         />
 
         <main>
-          <input
-            value={value}
-            on:input={(event) => value.setValue(event.currentTarget.value)}
-          />
-          <div>{value}</div>
-          <button on:click={greet}>Greet</button>
-          <div>{greet.ready() ? "ready" : "loading"}</div>
-          <div>{String(greet.error())}</div>
-          <div>{greet.data()}</div>
+          {scanStateAtom().status === "idle" && (
+            <div>
+              <p>Choose a folder to start building your library</p>
+              <ActionIcon
+                type="button"
+                variant="default"
+                size="lg"
+                aria-label="Upload folder"
+                title="Upload folder"
+                on:click={scanFolder}
+              >
+                <Icon id="folder-plus" size={24} />
+              </ActionIcon>
+            </div>
+          )}
 
-          <div>
-            <button on:click={() => OpenDialog()}>Open Dialog</button>
-          </div>
+          {scanStateAtom().status === "running" && (
+            <div>
+              <h2>Scanning folder...</h2>
+              <p>
+                {scanStateAtom().current} / {scanStateAtom().total} tracks
+              </p>
+              <progress
+                value={scanStateAtom().current}
+                max={scanStateAtom().total || 1}
+              />
+              <p>{scanStateAtom().path}</p>
+            </div>
+          )}
+
+          {scanStateAtom().status === "done" && (
+            <div>
+              <h2>Scan finished</h2>
+              <p>
+                Imported {scanStateAtom().success} of {scanStateAtom().total}
+              </p>
+            </div>
+          )}
+
+          {scanStateAtom().status === "error" && (
+            <div>
+              <h2>Scan failed</h2>
+              <p>{scanStateAtom().path}</p>
+            </div>
+          )}
         </main>
       </div>
       <footer class={styles.bottomBar}>bottom bar</footer>

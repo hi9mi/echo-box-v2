@@ -1,7 +1,7 @@
 import styles from "./track-list.module.css";
 import { TrackCard } from "../track-card/track-card";
 import { ActionIcon, Icon } from "@shared/ui";
-import type { Track } from "../../model";
+import { scanFolder, type Track } from "../../model";
 import { computed, type Atom } from "@reatom/core";
 
 export type TrackListProps = {
@@ -41,6 +41,7 @@ export const TrackList = ({
             shape="square"
             aria-label="Upload folder"
             title="Upload folder"
+            on:click={scanFolder}
           >
             <Icon id="folder-plus" size={18} />
           </ActionIcon>
@@ -48,7 +49,7 @@ export const TrackList = ({
       </header>
       {computed(() => (
         <ol class={styles.trackList}>
-          {tracks().map(({ id, title, artist, duration, cover }, index) => (
+          {tracks().map(({ id, title, artist, duration, ...rest }, index) => (
             <TrackCard
               id={id}
               active={id === activeTrackId()}
@@ -56,8 +57,9 @@ export const TrackList = ({
               artist={artist}
               title={title}
               duration={duration}
-              cover={cover}
+              cover={null}
               trackIndex={index}
+              {...rest}
             />
           ))}
         </ol>
